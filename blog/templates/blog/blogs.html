@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blogs Home Page</title>
+    <style>
+        table {
+            width: 30%;
+        }
+        td, th{
+            padding: 5px;
+            border: double;
+        }
+    </style>
+</head>
+<body>
+<h1>List of all blogs</h1>
+Click <a href= "/users/logout/">here</a> to logout <br><br>
+<table>
+        <tr>
+            <th>Title</th>
+            <th>Author</th>
+            <th>Action</th>
+        </tr>
+        {% for d in data %}
+            <tr>
+                <td>{{d.title}} </td>
+                <td>{{ d.author.get_full_name}}</td>
+                <td>
+                    <a href="/users/readblog/{{ d.id }}">Detail</a> |
+                    {% if d.author == request.user %}
+                    <a href="/users/update/{{ d.id }}/">Update</a> |
+                    <form action="/users/delete/{{ d.id }}/" method="post" id="formdelete">
+                    {% csrf_token %}
+                    <a href="#" onclick="document.getElementById('formdelete').submit()">Delete</a><br><br>
+                    </form>
+                    {% endif %}
+                </td>
+            </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

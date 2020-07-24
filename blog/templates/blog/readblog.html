@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Read blog</title>
+</head>
+<body>
+    <h1>{{ user_obj.title }}</h1>
+    <h4>Written by : {{ user_obj.author.get_full_name }} | Created on : {{ user_obj.created_on }} | 
+        Last updated : {{ user_obj.updated_on  }}</h4>
+    <p>{{ user_obj.content }}</p>
+</body>
+</html>

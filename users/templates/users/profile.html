@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile Page</title>
+</head>
+<body>
+    <h1>My profile page</h1>
+    Click <a href="/users/logout/">here</a> to logout<br><br>
+    
+    {% for img in images %}
+        {% if forloop.last %}
+        <img src="{{ img.image.url }}" alt="{{ img.title }}" width=30%>
+        {% endif %}
+    {% endfor %} <br>
+    
+    <h3>Name : {{ request.user.get_full_name }}</h3>
+    <h3>Email : {{ request.user.email }}</h3><br>
+    
+    <h4><a href="/users/upload/">Upload your profile picture</a></h4>
+
+    <h4><a href="/users/createblog/">Click to create a blog</a></h4>
+    <h4><a href="/users/blogs/">View all blogs</a></h4>
+    </form>
+    
+</body>
+</html>
